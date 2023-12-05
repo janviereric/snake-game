@@ -7,6 +7,11 @@
   cursor: default;
 }
 
+a {
+  color: var(--dark);
+  text-decoration: none;
+}
+
 body {
   font-size: 10px;
 }
@@ -33,6 +38,7 @@ header {
   transition: all 0.2s;
   background-color: #2ecc71;
   border-radius: 0.2rem;
+  cursor: pointer;
 }
 /* header end */
 
@@ -47,9 +53,12 @@ main {
   background: white;
 }
 
-canvas {
-  border: 1px solid black;
+main a {
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
 }
+
 /* main end */
 
 /* footer start */

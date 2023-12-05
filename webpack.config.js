@@ -6,6 +6,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     main: path.join(__dirname, "src/index.js"),
+    game: path.join(__dirname, "src/game/game.js"),
+    map: path.join(__dirname, "src/map/map.js"),
+    snake: path.join(__dirname, "src/snake/snake.js"),
   },
   output: {
     path: path.join(__dirname, "dist"),
@@ -34,13 +37,20 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: "./src/img/*",
-          to: "./",
+          from: "./src/assets/images/*",
+          to: "assets/images/[name][ext]",
         },
       ],
     }),
     new HtmlWebpackPlugin({
+      filename: "./index.html",
       template: path.join(__dirname, "./src/index.html"),
+      chunks: ["main"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "./game.html",
+      template: path.join(__dirname, "./src/game/game.html"),
+      chunks: ["game", "map", "snake"],
     }),
   ],
   stats: "minimal",
@@ -49,9 +59,6 @@ module.exports = {
   devServer: {
     open: true,
     static: path.resolve(__dirname, "./dist"),
-    historyApiFallback: {
-      index: "index.html",
-    },
     watchFiles: ["./src/**"],
     port: 4000,
     hot: true,
