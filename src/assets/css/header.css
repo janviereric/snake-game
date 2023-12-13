@@ -1,0 +1,16 @@
+header {
+  background-color: #27ae60;
+  height: 3rem;
+}
+
+.container-title-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.text-title-logo {
+  font-size: 1rem;
+  padding: 0.6rem;
+  margin-top: 0.2rem;
+  color: #f5f6fa;
+}

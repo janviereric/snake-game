@@ -6,9 +6,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     main: path.join(__dirname, "src/index.js"),
-    game: path.join(__dirname, "src/game/game.js"),
-    map: path.join(__dirname, "src/map/map.js"),
-    snake: path.join(__dirname, "src/snake/snake.js"),
+    menu: path.join(__dirname, "src/game/game-menu.js"),
+    play: path.join(__dirname, "src/game/game-play.js"),
   },
   output: {
     path: path.join(__dirname, "dist"),
@@ -45,12 +44,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "./index.html",
       template: path.join(__dirname, "./src/index.html"),
-      chunks: ["main"],
-    }),
-    new HtmlWebpackPlugin({
-      filename: "./game.html",
-      template: path.join(__dirname, "./src/game/game.html"),
-      chunks: ["game", "map", "snake"],
+      chunks: ["main", "menu", "play"],
     }),
   ],
   stats: "minimal",

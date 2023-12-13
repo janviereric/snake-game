@@ -1,4 +1,3 @@
-/* main start */
 main {
   height: 100vh;
   width: 100%;
@@ -9,7 +8,8 @@ main {
   background: white;
 }
 
-canvas {
-  border: 1px solid black;
+main a {
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
 }
-/* main end */

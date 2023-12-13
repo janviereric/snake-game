@@ -1,16 +1,15 @@
 import {
-  drawMap,
   snake,
   drawSnakeHeadRight,
   drawSnakeHeadLeft,
   drawSnakeHeadTop,
   drawSnakeHeadBottom,
-  drawSnakeBody,
   drawSnakeTailRight,
   drawSnakeTailLeft,
   drawSnakeTailTop,
   drawSnakeTailBottom,
-} from "../snake.js";
+  gameOver,
+} from "../index.js";
 
 export let direction = "e";
 
@@ -64,7 +63,7 @@ export const snakePosition = () => {
   }
 };
 
-const updateSnakePosition = () => {
+export const updateSnakePosition = () => {
   let snakeHead;
   let snakeTail;
   switch (direction) {
@@ -93,14 +92,6 @@ const updateSnakePosition = () => {
   }
   snake.unshift(snakeHead);
   snake.pop();
-};
 
-export const move = () => {
-  updateSnakePosition();
-  drawMap();
-  snakePosition();
-  drawSnakeBody();
-  setTimeout(() => {
-    requestAnimationFrame(move);
-  }, 1000);
+  return gameOver();
 };

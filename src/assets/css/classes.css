@@ -1,0 +1,26 @@
+.off {
+  display: none;
+}
+
+.button {
+  border: 0;
+  border-radius: 0.3rem;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  transition: all 0.2s;
+  &:hover {
+    box-shadow: 0 0.1rem 0.2rem 0 rgba(60, 64, 67, 0.3),
+      0 0.1rem 0.3rem 0.1rem rgba(60, 64, 67, 0.15);
+    opacity: 89%;
+    transition: box-shadow 0.2s;
+    transition: all 0.2s;
+  }
+}
+
+.button-play {
+  background: #27ae60;
+  border: 0.2rem solid #2ecc71;
+  color: #f5f6fa;
+}

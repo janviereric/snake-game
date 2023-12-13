@@ -7,7 +7,7 @@ import {
   snakeEyeThirdColor,
   snakeNostrilColor,
   snakeColorBorder,
-} from "../snake.js";
+} from "../index.js";
 export const snake = [
   [9, 9],
   [8, 9],
