@@ -1,11 +1,11 @@
 header {
-  background-color: #27ae60;
-  height: 3rem;
-}
-
-.container-title-logo {
+  background-color: #2ecc71;
+  min-height: 5rem;
+  width: 41.5rem;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 0.3rem;
+  border-top-left-radius: 0.3rem;
 }
 
 .text-title-logo {

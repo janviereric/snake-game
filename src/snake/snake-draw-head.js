@@ -8,10 +8,11 @@ import {
   snakeNostrilColor,
   snakeColorBorder,
 } from "../index.js";
+
 export const snake = [
-  [9, 9],
-  [8, 9],
-  [7, 9],
+  [2, 7],
+  [1, 7],
+  [0, 7],
 ];
 
 export const drawSnakeHeadRight = () => {

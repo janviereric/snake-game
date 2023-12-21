@@ -1,7 +1,7 @@
 import {
   updateSnakePosition,
   gameOver,
-  drawMap,
+  landMaps,
   snakePosition,
   drawSnakeBody,
   fruitsAppear,
@@ -9,7 +9,7 @@ import {
 
 export const gameLoop = () => {
   if (!updateSnakePosition()) {
-    drawMap();
+    landMaps();
     snakePosition();
     drawSnakeBody();
     fruitsAppear();

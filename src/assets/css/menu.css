@@ -1,0 +1,36 @@
+.calc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  border-radius: 0.3rem;
+  text-align: center;
+  height: 26rem;
+  width: 20rem;
+}
+
+.menu-home {
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-image img {
+  height: 20rem;
+  width: 20rem;
+  border-radius: 0.3rem;
+}
+
+.menu-buttons {
+  display: flex;
+  justify-content: space-between;
+}

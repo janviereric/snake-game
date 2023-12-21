@@ -15,18 +15,24 @@ export let direction = "e";
 
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
+    case "d":
     case "ArrowRight": {
       direction = "e";
       break;
     }
+    case "q":
+    case "a":
     case "ArrowLeft": {
       direction = "o";
       break;
     }
+    case "z":
+    case "w":
     case "ArrowUp": {
       direction = "n";
       break;
     }
+    case "s":
     case "ArrowDown": {
       direction = "s";
       break;

@@ -1,8 +1,40 @@
 import "./index.css";
 
 // folder map start
-export { drawMap, context2D, gridElement } from "./map/map-draw.js";
-export { mapSeaColor } from "./map/map-color.js";
+export { drawMaps, context2D, gridElement } from "./maps/maps-draw.js";
+export { landMaps } from "./maps/maps-land.js";
+export {
+  lightGreenMapColor,
+  darkGreenMapColor,
+  greenBorderMapColor,
+  lightRedMapColor,
+  darkRedMapColor,
+  redBorderMapColor,
+  lightBlueMapColor,
+  darkBlueMapColor,
+  blueBorderMapColor,
+  lightYellowMapColor,
+  darkYellowMapColor,
+  yellowBorderMapColor,
+  lightPinkMapColor,
+  darkPinkMapColor,
+  pinkBorderMapColor,
+  lightOrangeMapColor,
+  darkOrangeMapColor,
+  orangeBorderMapColor,
+  lightPurpleMapColor,
+  darkPurpleMapColor,
+  purpleBorderMapColor,
+  lightGrayMapColor,
+  darkGrayMapColor,
+  grayBorderMapColor,
+  lightWhiteMapColor,
+  darkWhiteMapColor,
+  whiteBorderMapColor,
+  lightBlackMapColor,
+  darkBlackMapColor,
+  blackBorderMapColor,
+} from "./maps/maps-color.js";
 // folder map end
 
 // folder snake start
@@ -48,51 +80,39 @@ export {
 // folder snake end
 
 // folder fruits start
-export {
-  drawGreenFruit,
-  drawRedFruit,
-  drawBlueFruit,
-  drawYellowFruit,
-  drawPinkFruit,
-  drawOrangeFruit,
-  drawPurpleFruit,
-  drawGrayFruit,
-  drawWhiteFruit,
-  drawBlackFruit,
-} from "./fruits/fruits-draw.js";
+export { drawFruits } from "./fruits/fruits-draw.js";
 export { fruitsAppear } from "./fruits/fruits-appear.js";
-
 export {
-  greenFruitColor,
-  greenFruitBorderColor,
-  greenBranchFruitColor,
   redFruitColor,
   redFruitBorderColor,
   redBranchFruitColor,
   blueFruitColor,
   blueFruitBorderColor,
   blueBranchFruitColor,
-  yellowFruitColor,
-  yellowFruitBorderColor,
-  yellowBranchFruitColor,
+  grayFruitColor,
+  grayFruitBorderColor,
+  grayBranchFruitColor,
   pinkFruitColor,
   pinkFruitBorderColor,
   pinkBranchFruitColor,
+  blackFruitColor,
+  blackFruitBorderColor,
+  blackBranchFruitColor,
+  greenFruitColor,
+  greenFruitBorderColor,
+  greenBranchFruitColor,
+  whiteFruitColor,
+  whiteFruitBorderColor,
+  whiteBranchFruitColor,
   orangeFruitColor,
   orangeFruitBorderColor,
   orangeBranchFruitColor,
   purpleFruitColor,
   purpleFruitBorderColor,
   purpleBranchFruitColor,
-  grayFruitColor,
-  grayFruitBorderColor,
-  grayBranchFruitColor,
-  whiteFruitColor,
-  whiteFruitBorderColor,
-  whiteBranchFruitColor,
-  blackFruitColor,
-  blackFruitBorderColor,
-  blackBranchFruitColor,
+  yellowFruitColor,
+  yellowFruitBorderColor,
+  yellowBranchFruitColor,
 } from "./fruits/fruits-color.js";
 // folder fruits end
 
@@ -100,3 +120,7 @@ export {
 export { gameLoop } from "./game/game-loop.js";
 export { gameOver } from "./game/game-over.js";
 // folder rules end
+
+// folder assets > javascripts start
+export { openMenu } from "./assets/javascripts/menu.js";
+// folder assets > javascripts end
