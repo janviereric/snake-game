@@ -1,6 +1,11 @@
 import "./index.css";
 
-// folder map start
+// folder assets > javascripts start
+// // we separate it from other imports from the same file because javascript is a synchronous language
+export { containerGame } from "./assets/javascripts/game.js";
+// folder assets > javascripts end
+
+// folder maps start
 export { drawMaps, context2D, gridElement } from "./maps/maps-draw.js";
 export { landMaps } from "./maps/maps-land.js";
 export {
@@ -35,7 +40,7 @@ export {
   darkBlackMapColor,
   blackBorderMapColor,
 } from "./maps/maps-color.js";
-// folder map end
+// folder maps end
 
 // folder snake start
 export { drawSnakeBody } from "./snake/snake-draw-body.js";
@@ -56,12 +61,6 @@ export {
 } from "./snake/snake-draw-tail.js";
 
 export {
-  direction,
-  snakePosition,
-  updateSnakePosition,
-} from "./snake/snake-move.js";
-
-export {
   snakeHeadColor,
   snakeEyeFirstColor,
   snakeEyeSecondColor,
@@ -80,8 +79,7 @@ export {
 // folder snake end
 
 // folder fruits start
-export { drawFruits } from "./fruits/fruits-draw.js";
-export { fruitsAppear } from "./fruits/fruits-appear.js";
+export { fruit, drawFruits, generateFruit } from "./fruits/fruits-draw.js";
 export {
   redFruitColor,
   redFruitBorderColor,
@@ -114,13 +112,16 @@ export {
   yellowFruitBorderColor,
   yellowBranchFruitColor,
 } from "./fruits/fruits-color.js";
+
+export { fruitsAppear } from "./fruits/fruits-appear.js";
 // folder fruits end
 
-// folder rules start
-export { gameLoop } from "./game/game-loop.js";
-export { gameOver } from "./game/game-over.js";
-// folder rules end
-
 // folder assets > javascripts start
+export {
+  direction,
+  snakePosition,
+  gameLoop,
+  gameOver,
+} from "./assets/javascripts/game.js";
 export { openMenu } from "./assets/javascripts/menu.js";
 // folder assets > javascripts end

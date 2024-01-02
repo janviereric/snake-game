@@ -1,6 +1,6 @@
-import { context2D, gridElement } from "../index.js";
+import { context2D, gridElement, snake } from "../index.js";
 
-let fruit = [5, 1];
+export let fruit = [5, 1];
 
 export const drawFruits = (fruitColor, fruitBorderColor, branchFruitColor) => {
   context2D.beginPath();
@@ -29,4 +29,24 @@ export const drawFruits = (fruitColor, fruitBorderColor, branchFruitColor) => {
   context2D.fillStyle = `${branchFruitColor}`;
   context2D.fill();
   context2D.closePath();
+};
+
+// generate a fruit
+export const generateFruit = () => {
+  const [x, y] = [
+    Math.trunc(Math.random() * 14),
+    Math.trunc(Math.random() * 14),
+  ];
+  // prevents the fruit from appearing on the snake
+  for (let snakeBody of snake) {
+    if (snakeBody[0] === x && snakeBody[1] === y) {
+      return generateFruit();
+    }
+  }
+  // prevent the fruit from appearing twice in the same place
+  if (fruit[0] === x && fruit[1] === y) {
+    generateFruit();
+  } else {
+    fruit = [x, y];
+  }
 };

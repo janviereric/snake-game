@@ -167,7 +167,7 @@ export const drawSnakeBody = () => {
     // snake body eighth stain end
 
     let firstBody = snakeBody[0];
-    if (direction === "e" || direction === "o") {
+    if (direction === "east" || direction === "west") {
       // snake first body first stain start
       context2D.beginPath();
       context2D.roundRect(

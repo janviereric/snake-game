@@ -1,8 +1,8 @@
-export const lightGreenMapColor = "#44bd32";
-export const darkGreenMapColor = "#009432";
-export const greenBorderMapColor = "2rem #27ae60 solid";
+export const lightGreenMapColor = "#228b22";
+export const darkGreenMapColor = "#008000";
+export const greenBorderMapColor = "2rem #006400 solid";
 
-export const lightRedMapColor = "#e66767 ";
+export const lightRedMapColor = "#e66767";
 export const darkRedMapColor = "#b33939";
 export const redBorderMapColor = "2rem #ea2027 solid";
 

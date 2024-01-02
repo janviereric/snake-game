@@ -1,6 +1,7 @@
-const canvas = document.querySelector("canvas");
-export const context2D = canvas.getContext("2d");
+import { containerGame } from "../index.js";
 
+const canvas = containerGame.querySelector("canvas");
+export const context2D = canvas.getContext("2d");
 export const gridElement = 40; // 20 * 20
 
 export const drawMaps = (lightMapColor, darkMapColor, borderMapColor) => {

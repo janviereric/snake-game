@@ -1,69 +1,107 @@
 import {
   landMaps,
-  snakePosition,
   drawSnakeBody,
+  snakePosition,
   fruitsAppear,
   gameLoop,
 } from "../../index.js";
+import janviereric from "/assets/images/janviereric.jpg";
+import buttonparams from "/assets/images/button-params.jpg";
+import keyboardkey from "/assets/images/keyboard-key.jpg";
 
-const body = document.querySelector("body");
 const containerMenu = document.querySelector("#container-menu");
-let calc;
-let menu;
-let gameStart = false;
-
-// draw the snake game when we start
-if (!gameStart) {
-  landMaps();
-  snakePosition();
-  drawSnakeBody();
-  fruitsAppear();
-}
-
-const createCalc = () => {
-  calc = document.createElement("div");
-  calc.classList.add("calc");
-  calc.addEventListener("click", (event) => {
-    event.stopPropagation();
-  });
-};
-
-const createMenu = () => {
-  body.classList.add("remove-scrolling");
-  menu = document.createElement("div");
-  menu.classList.add("menu");
-  menu.innerHTML = `
-  <div class="menu-home">
-    <div class="menu-image"> 
-      <img src="./assets/images/janviereric.jpg" alt="JanvierEric" />
-    </div>
-    <div class="menu-buttons">
-      <button class="button button-play"> ▷ Jouer </button>
-      <div class="button-params">
-        <img src="./assets/images/button-params.jpg" alt="button params" />
+containerMenu.innerHTML = `
+<div class="calc">
+  <div class="menu">
+    <div class="menu-home">
+      <div class="menu-image">
+        <img src="/assets/images/janviereric.jpg" alt="Janvier Eric" />
       </div>
-    </div>
-  </div>
-  `;
+      <div class="menu-buttons">
+        <button class="button button-play">▷ Jouer</button>
+        <div class="button-params">
+          <img src="/assets/images/buttonparams.jpg" alt="button params"/>
+        </div>          
+      </div>          
+    </div>          
+  </div>            
+</div>                  
+`;
+containerMenu.querySelector(".menu-image > img").src = janviereric;
+containerMenu.querySelector(".button-params > img").src = buttonparams;
 
-  const buttonPlay = menu.querySelector(".button-play");
-  buttonPlay.addEventListener("click", (event) => {
-    event.stopPropagation();
-    containerMenu.classList.add("off");
-    gameStart = !gameStart;
-    requestAnimationFrame(gameLoop);
-  });
-};
+const buttonPlay = containerMenu.querySelector(".button-play");
 
-// menu is open when we start
-createCalc();
-createMenu();
-calc.append(menu);
-containerMenu.append(calc);
+const containerKeyboardKey = document.querySelector("#container-keyboard-key");
+containerKeyboardKey.innerHTML = `<img src="/assets/images/keyboardkey.jpg" alt="Touche du clavier" />`;
+containerKeyboardKey.querySelector("img").src = keyboardkey;
+
+let isMenuOpen = true;
+let isGamePlay;
+let keyPress = false;
 
 // open the menu anywhere
 export const openMenu = () => {
   containerMenu.classList.remove("off");
-  calc.append(menu);
-  containerMenu.append(calc);
 };
+
+// button play start
+const gamePlay = (isGamePlay) => {
+  buttonPlay.addEventListener("click", (event) => {
+    event.stopPropagation();
+    // don't show the menu game
+    isMenuOpen = !isMenuOpen;
+    containerMenu.classList.add("off");
+    // show the keyboard key image after press the play button
+    containerKeyboardKey.classList.remove("off");
+    gameStart();
+  });
+  return isGamePlay;
+};
+isGamePlay = gamePlay(true);
+// button play end
+
+// keyboard key press to remove the image and the game start
+const gameStart = () => {
+  if (!isMenuOpen && isGamePlay) {
+    window.addEventListener(
+      "keydown",
+      (event) => {
+        keyPress = event.key;
+        switch (keyPress) {
+          case "KeyZ":
+          case "KeyW":
+          case "ArrowUp":
+          case "KeyS":
+          case "ArrowDown":
+          case "KeyD":
+          case "ArrowRight": {
+            event.stopPropagation();
+            containerKeyboardKey.classList.add("off");
+            requestAnimationFrame(gameLoop);
+            break;
+          }
+          default: {
+            event.stopPropagation();
+            keyPress = "KeyD";
+            containerKeyboardKey.classList.add("off");
+            requestAnimationFrame(gameLoop);
+            break;
+          }
+        }
+      },
+      { once: true }
+    );
+  }
+};
+
+// don't show the keyboard key image before press the play button
+if (isMenuOpen) {
+  containerKeyboardKey.classList.add("off");
+}
+
+// draw the game before started
+landMaps();
+fruitsAppear();
+snakePosition();
+drawSnakeBody();

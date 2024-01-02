@@ -1,3 +1,4 @@
+/* Container menu start */
 .calc {
   position: fixed;
   top: 0;
@@ -24,9 +25,19 @@
   justify-content: space-between;
 }
 
-.menu-image img {
+.menu-image {
   height: 20rem;
   width: 20rem;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem #2ecc71 solid;
+}
+
+.menu-image img {
+  height: 19.8rem;
+  width: 19.8rem;
   border-radius: 0.3rem;
 }
 
@@ -34,3 +45,16 @@
   display: flex;
   justify-content: space-between;
 }
+/* Container menu end */
+
+/* Container keyboard key start */
+#container-keyboard-key img {
+  position: absolute;
+  height: 10rem;
+  width: 10rem;
+  margin-left: 20rem;
+  margin-top: 12rem;
+  border-radius: 0.5rem;
+  opacity: 40%;
+}
+/* Container keyboard key end */
