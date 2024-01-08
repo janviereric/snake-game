@@ -30,7 +30,7 @@ import {
   yellowFruitColor,
   yellowFruitBorderColor,
   yellowBranchFruitColor,
-} from "../index.js";
+} from "../assets/javascripts/exports.js";
 
 const fruits = Math.floor(Math.random() * 10);
 

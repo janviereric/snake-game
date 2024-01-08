@@ -15,10 +15,10 @@
       src="https://kit.fontawesome.com/5a38324862.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
     <title>Snake Game</title>
-    <script src="./index.js" type="module"></script>
-    <script src="./assets/javascripts/exports.js" type="module"></script>
+    <script src="../assets/javascripts/exports.js" type="module"></script>
+    <script src="./game.js" type="module"></script>
   </head>
   <body>
     <header>
@@ -27,21 +27,20 @@
       </div>
     </header>
     <main>
-      <div id="container-menu">
+      <div id="container-menu" class="off">
         <div class="calc">
           <div class="menu">
             <div class="menu-home">
               <div id="menu-image"></div>
               <div class="menu-buttons">
-                <button id="button-index" class="button-primary">
-                  ▷ Jouer
-                </button>
+                <button id="button-game" class="button-primary">▷ Jouer</button>
                 <div id="button-params" class="button-secondary"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div id="container-keyboard-key"></div>
       <div id="container-game">
         <canvas width="600px" height="600px"></canvas>
       </div>

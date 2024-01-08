@@ -1,5 +1,4 @@
-import { containerGame } from "../index.js";
-
+const containerGame = document.querySelector("#container-game");
 const canvas = containerGame.querySelector("canvas");
 export const context2D = canvas.getContext("2d");
 export const gridElement = 40; // 20 * 20

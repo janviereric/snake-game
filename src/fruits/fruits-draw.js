@@ -1,6 +1,10 @@
-import { context2D, gridElement, snake } from "../index.js";
+import {
+  context2D,
+  gridElement,
+  snake,
+} from "../assets/javascripts/exports.js";
 
-export let fruit = [5, 1];
+export let fruit = [12, 7];
 
 export const drawFruits = (fruitColor, fruitBorderColor, branchFruitColor) => {
   context2D.beginPath();

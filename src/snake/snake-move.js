@@ -13,12 +13,9 @@ import {
   fruit,
   fruitsAppear,
   generateFruit,
-  openMenu,
-} from "../../index.js";
+} from "../assets/javascripts/exports.js";
 
-export const containerGame = document.querySelector("#container-game");
-containerGame.innerHTML = `<canvas width="600px" height="600px"></canvas>`;
-
+const containerMenu = document.querySelector("#container-menu");
 export let direction = "east";
 let snakeHead;
 let snakeTail;
@@ -87,6 +84,47 @@ window.addEventListener("keydown", (event) => {
   }
 });
 // game touch end
+
+// game over start
+export const gameOver = () => {
+  // easy level
+  // if (snake[0][0] > 14) {
+  //   snake[0][0] = 0;
+  // } else if (snake[0][0] < 0) {
+  //   snake[0][0] = 14;
+  // } else if (snake[0][1] > 14) {
+  //   console.log(snake[0][1]);
+  //   snake[0][1] = 0;
+  // } else if (snake[0][1] < 0) {
+  //   console.log(snake[0][1]);
+  //   snake[0][1] = 14;
+  // } else {
+
+  // normal and hard level :
+  // game over if the snake clash with the border of the map
+  if (
+    snake[0][0] > 14 ||
+    snake[0][0] < 0 ||
+    snake[0][1] > 14 ||
+    snake[0][1] < 0
+  ) {
+    containerMenu.classList.remove("off");
+    // window.location.reload();
+    return true;
+  } else {
+    // game over if the snake head clash with the snake body
+    const [snakeHead, ...snakeBody] = snake;
+    for (let body of snakeBody) {
+      if (body[0] === snakeHead[0] && body[1] === snakeHead[1]) {
+        containerMenu.classList.remove("off");
+        // window.location.reload();
+        return true;
+      }
+    }
+  }
+  return false;
+};
+// game over end
 
 export const snakePosition = () => {
   switch (direction) {
@@ -161,48 +199,3 @@ export const gameLoop = () => {
   }
 };
 // game loop end
-
-// game over start
-export const gameOver = () => {
-  // easy level
-  // if (snake[0][0] > 14) {
-  //   snake[0][0] = 0;
-  // } else if (snake[0][0] < 0) {
-  //   snake[0][0] = 14;
-  // } else if (snake[0][1] > 14) {
-  //   console.log(snake[0][1]);
-  //   snake[0][1] = 0;
-  // } else if (snake[0][1] < 0) {
-  //   console.log(snake[0][1]);
-  //   snake[0][1] = 14;
-  // } else {
-
-  // normal and hard level :
-  // game over if the snake clash with the border of the map
-  if (
-    snake[0][0] > 14 ||
-    snake[0][0] < 0 ||
-    snake[0][1] > 14 ||
-    snake[0][1] < 0
-  ) {
-    setTimeout(() => {
-      openMenu();
-    }, "1000");
-    // location.reload();
-    return true;
-  } else {
-    // game over if the snake head clash with the snake body
-    const [snakeHead, ...snakeBody] = snake;
-    for (let body of snakeBody) {
-      if (body[0] === snakeHead[0] && body[1] === snakeHead[1]) {
-        setTimeout(() => {
-          openMenu();
-        }, "1000");
-        // location.reload();
-        return true;
-      }
-    }
-  }
-  return false;
-};
-// game over end

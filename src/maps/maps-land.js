@@ -30,7 +30,7 @@ import {
   lightBlackMapColor,
   darkBlackMapColor,
   blackBorderMapColor,
-} from "../index.js";
+} from "../assets/javascripts/exports.js";
 
 const maps = Math.floor(Math.random() * 10);
 

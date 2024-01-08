@@ -8,7 +8,7 @@ import {
   snakeTailStainColorLeftDirection,
   snakeTailStainColorTopDirection,
   snakeTailStainColorBottomDirection,
-} from "../index.js";
+} from "../assets/javascripts/exports.js";
 
 export const drawSnakeTailRight = () => {
   let snakeTail = snake[snake.length - 1];

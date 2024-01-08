@@ -25,7 +25,7 @@
   justify-content: space-between;
 }
 
-.menu-image {
+#menu-image {
   height: 20rem;
   width: 20rem;
   border-radius: 0.3rem;
@@ -35,7 +35,7 @@
   border: 0.2rem #2ecc71 solid;
 }
 
-.menu-image img {
+#menu-image img {
   height: 19.8rem;
   width: 19.8rem;
   border-radius: 0.3rem;

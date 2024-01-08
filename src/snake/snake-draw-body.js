@@ -7,7 +7,7 @@ import {
   snakeFirstBodyStainColor,
   snakeColorBorder,
   direction,
-} from "../index.js";
+} from "../assets/javascripts/exports.js";
 
 export const drawSnakeBody = () => {
   // snake body start
