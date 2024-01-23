@@ -1,37 +1,37 @@
 import {
-  landMaps,
+  mapLands,
   snake,
-  drawSnakeHeadRight,
-  drawSnakeHeadLeft,
-  drawSnakeHeadTop,
-  drawSnakeHeadBottom,
-  drawSnakeBody,
-  drawSnakeTailRight,
-  drawSnakeTailLeft,
-  drawSnakeTailTop,
-  drawSnakeTailBottom,
+  snakeMoltHeadRightDirection,
+  snakeMoltHeadLeftDirection,
+  snakeMoltHeadTopDirection,
+  snakeMoltHeadBottomDirection,
+  snakeMoltBody,
+  snakeMoltTailRightDirection,
+  snakeMoltTailLeftDirection,
+  snakeMoltTailTopDirection,
+  snakeMoltTailBottomDirection,
   fruit,
   fruitsAppear,
   generateFruit,
-  openMenu,
-} from "../../index.js";
+  header,
+  menu,
+} from "../index.js";
 
-export const containerGame = document.querySelector("#container-game");
-containerGame.innerHTML = `<canvas width="600px" height="600px"></canvas>`;
+export const data = {
+  number: 0,
+  speed: 700, // 900 fast, 700 middle, 500 slow
+};
 
 export let direction = "east";
 let snakeHead;
 let snakeTail;
-let speed = 700;
-//  900 fast
-// 700 middle
-// 500 slow
-
-// the four axes are to prevent the snake from eating itself in the opposite direction
+let dataNumber = data.number;
+let dataSpeed = data.speed;
 let eastAxe = true;
 let westAxe;
 let northAxe = true;
 let southAxe = true;
+// the four axes are to prevent the snake from eating itself in the opposite direction
 
 // game touch start
 window.addEventListener("keydown", (event) => {
@@ -39,7 +39,7 @@ window.addEventListener("keydown", (event) => {
   if (
     (keyDirection === "ArrowRight" && eastAxe === true) ||
     (keyDirection === "d" && eastAxe === true) ||
-    (keyDirection === "D" && eastAxe === true)
+    (keyDirection === "D" && eastEastAxe === true)
   ) {
     direction = "east";
     westAxe = false;
@@ -88,26 +88,76 @@ window.addEventListener("keydown", (event) => {
 });
 // game touch end
 
-export const snakePosition = () => {
+// game over start
+const gameOver = () => {
+  // easy level
+  // if (snake[0][0] > 14) {
+  //   snake[0][0] = 0;
+  // } else if (snake[0][0] < 0) {
+  //   snake[0][0] = 14;
+  // } else if (snake[0][1] > 14) {
+  //   console.log(snake[0][1]);
+  //   snake[0][1] = 0;
+  // } else if (snake[0][1] < 0) {
+  //   console.log(snake[0][1]);
+  //   snake[0][1] = 14;
+  // } else {
+
+  // normal and hard level :
+  // game over if the snake clash with the border of the map
+  if (
+    snake[0][0] > 14 ||
+    snake[0][0] < 0 ||
+    snake[0][1] > 14 ||
+    snake[0][1] < 0
+  ) {
+    setTimeout(() => {
+      menu();
+      // reset the data for a new game
+      direction = "east";
+      dataNumber = 0;
+    }, 1000);
+
+    return true;
+  } else {
+    // game over if the snake head clash with the snake body
+    const [snakeHead, ...snakeBody] = snake;
+    for (let body of snakeBody) {
+      if (body[0] === snakeHead[0] && body[1] === snakeHead[1]) {
+        setTimeout(() => {
+          menu();
+          // reset the data for a new game
+          direction = "east";
+          dataNumber = 0;
+        }, 1000);
+        return true;
+      }
+    }
+  }
+  return false;
+};
+// game over end
+
+export const snakePosition = (dataNumber) => {
   switch (direction) {
     case "east": {
-      drawSnakeHeadRight();
-      drawSnakeTailRight();
+      snakeMoltHeadRightDirection(dataNumber);
+      snakeMoltTailRightDirection(dataNumber);
       break;
     }
     case "west": {
-      drawSnakeHeadLeft();
-      drawSnakeTailLeft();
+      snakeMoltHeadLeftDirection(dataNumber);
+      snakeMoltTailLeftDirection(dataNumber);
       break;
     }
     case "north": {
-      drawSnakeHeadTop();
-      drawSnakeTailTop();
+      snakeMoltHeadTopDirection(dataNumber);
+      snakeMoltTailTopDirection(dataNumber);
       break;
     }
     case "south": {
-      drawSnakeHeadBottom();
-      drawSnakeTailBottom();
+      snakeMoltHeadBottomDirection(dataNumber);
+      snakeMoltTailBottomDirection(dataNumber);
       break;
     }
   }
@@ -138,71 +188,27 @@ const updateSnakePosition = () => {
   }
   // when the snake ate a fruit
   if (snakeHead[0] === fruit[0] && snakeHead[1] === fruit[1]) {
+    dataNumber++;
+    header(dataNumber);
     generateFruit();
   } else {
     snake.pop();
   }
   snake.unshift(snakeHead);
-
   return gameOver();
 };
 
 // game loop start
 export const gameLoop = () => {
   if (!updateSnakePosition()) {
-    landMaps();
-    snakePosition();
-    drawSnakeBody();
-    fruitsAppear();
+    mapLands(dataNumber);
+    snakePosition(dataNumber);
+    snakeMoltBody(dataNumber);
+    fruitsAppear(dataNumber);
     gameOver();
     setTimeout(() => {
       requestAnimationFrame(gameLoop);
-    }, 1000 - speed);
+    }, 1000 - dataSpeed);
   }
 };
 // game loop end
-
-// game over start
-export const gameOver = () => {
-  // easy level
-  // if (snake[0][0] > 14) {
-  //   snake[0][0] = 0;
-  // } else if (snake[0][0] < 0) {
-  //   snake[0][0] = 14;
-  // } else if (snake[0][1] > 14) {
-  //   console.log(snake[0][1]);
-  //   snake[0][1] = 0;
-  // } else if (snake[0][1] < 0) {
-  //   console.log(snake[0][1]);
-  //   snake[0][1] = 14;
-  // } else {
-
-  // normal and hard level :
-  // game over if the snake clash with the border of the map
-  if (
-    snake[0][0] > 14 ||
-    snake[0][0] < 0 ||
-    snake[0][1] > 14 ||
-    snake[0][1] < 0
-  ) {
-    setTimeout(() => {
-      openMenu();
-    }, "1000");
-    // location.reload();
-    return true;
-  } else {
-    // game over if the snake head clash with the snake body
-    const [snakeHead, ...snakeBody] = snake;
-    for (let body of snakeBody) {
-      if (body[0] === snakeHead[0] && body[1] === snakeHead[1]) {
-        setTimeout(() => {
-          openMenu();
-        }, "1000");
-        // location.reload();
-        return true;
-      }
-    }
-  }
-  return false;
-};
-// game over end

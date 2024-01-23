@@ -1,59 +1,60 @@
 import {
   drawMaps,
-  lightGreenMapColor,
-  darkGreenMapColor,
-  greenBorderMapColor,
-  lightRedMapColor,
-  darkRedMapColor,
-  redBorderMapColor,
-  lightBlueMapColor,
-  darkBlueMapColor,
-  blueBorderMapColor,
-  lightYellowMapColor,
-  darkYellowMapColor,
-  yellowBorderMapColor,
-  lightPinkMapColor,
-  darkPinkMapColor,
-  pinkBorderMapColor,
-  lightOrangeMapColor,
-  darkOrangeMapColor,
-  orangeBorderMapColor,
-  lightPurpleMapColor,
-  darkPurpleMapColor,
-  purpleBorderMapColor,
-  lightGrayMapColor,
-  darkGrayMapColor,
-  grayBorderMapColor,
-  lightWhiteMapColor,
-  darkWhiteMapColor,
-  whiteBorderMapColor,
-  lightBlackMapColor,
-  darkBlackMapColor,
-  blackBorderMapColor,
+  firstMapLightColor,
+  firstMapDarkColor,
+  firstMapBorderColor,
+  secondMapLightColor,
+  secondMapDarkColor,
+  secondMapBorderColor,
+  thirdMapLightColor,
+  thirdMapDarkColor,
+  thirdMapBorderColor,
+  fourthMapLightColor,
+  fourthMapDarkColor,
+  fourthMapBorderColor,
+  fifthMapLightColor,
+  fifthMapDarkColor,
+  fifthMapBorderColor,
+  sixthMapLightColor,
+  sixthMapDarkColor,
+  sixthMapBorderColor,
+  seventhMapLightColor,
+  seventhMapDarkColor,
+  seventhMapBorderColor,
+  eighthMapLightColor,
+  eighthMapDarkColor,
+  eighthMapBorderColor,
+  ninthMapLightColor,
+  ninthMapDarkColor,
+  ninthBorderMapColor,
+  tenthMapLightColor,
+  tenthMapDarkColor,
+  tenthBorderMapColor,
 } from "../index.js";
 
-const maps = Math.floor(Math.random() * 10);
-
-export const landMaps = () => {
-  if (maps === 0) {
-    drawMaps(lightRedMapColor, darkRedMapColor, redBorderMapColor);
-  } else if (maps === 1) {
-    drawMaps(lightBlueMapColor, darkBlueMapColor, blueBorderMapColor);
-  } else if (maps === 2) {
-    drawMaps(lightGrayMapColor, darkGrayMapColor, grayBorderMapColor);
-  } else if (maps === 3) {
-    drawMaps(lightPinkMapColor, darkPinkMapColor, pinkBorderMapColor);
-  } else if (maps === 4) {
-    drawMaps(lightBlackMapColor, darkBlackMapColor, blackBorderMapColor);
-  } else if (maps === 5) {
-    drawMaps(lightGreenMapColor, darkGreenMapColor, greenBorderMapColor);
-  } else if (maps === 6) {
-    drawMaps(lightWhiteMapColor, darkWhiteMapColor, whiteBorderMapColor);
-  } else if (maps === 7) {
-    drawMaps(lightOrangeMapColor, darkOrangeMapColor, orangeBorderMapColor);
-  } else if (maps === 8) {
-    drawMaps(lightPurpleMapColor, darkPurpleMapColor, purpleBorderMapColor);
+export const mapLands = (number) => {
+  if (number < 5) {
+    drawMaps(firstMapLightColor, firstMapDarkColor, firstMapBorderColor);
+  } else if (number > 4 && number < 10) {
+    drawMaps(secondMapLightColor, secondMapDarkColor, secondMapBorderColor);
+  } else if (number > 9 && number < 15) {
+    drawMaps(thirdMapLightColor, thirdMapDarkColor, thirdMapBorderColor);
+  } else if (number > 14 && number < 20) {
+    drawMaps(fourthMapLightColor, fourthMapDarkColor, fourthMapBorderColor);
+  } else if (number > 19 && number < 25) {
+    drawMaps(fifthMapLightColor, fifthMapDarkColor, fifthMapBorderColor);
+  } else if (number > 24 && number < 30) {
+    drawMaps(sixthMapLightColor, sixthMapDarkColor, sixthMapBorderColor);
+  } else if (number > 29 && number < 35) {
+    drawMaps(seventhMapLightColor, seventhMapDarkColor, seventhMapBorderColor);
+  } else if (number > 34 && number < 40) {
+    drawMaps(eighthMapLightColor, eighthMapDarkColor, eighthMapBorderColor);
+  } else if (number > 39 && number < 45) {
+    drawMaps(ninthMapLightColor, ninthMapDarkColor, ninthBorderMapColor);
+  } else if (number > 44) {
+    drawMaps(tenthMapLightColor, tenthMapDarkColor, tenthBorderMapColor);
   } else {
-    drawMaps(lightYellowMapColor, darkYellowMapColor, yellowBorderMapColor);
+    // draw maps score for number = 0
+    drawMaps(firstMapLightColor, firstMapDarkColor, firstMapBorderColor);
   }
 };

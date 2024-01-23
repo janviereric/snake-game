@@ -1,8 +1,8 @@
 import { context2D, gridElement, snake } from "../index.js";
 
-export let fruit = [5, 1];
+export let fruit = [12, 7];
 
-export const drawFruits = (fruitColor, fruitBorderColor, branchFruitColor) => {
+export const drawFruits = (fruitColor, fruitBorderColor, fruitBranchColor) => {
   context2D.beginPath();
   context2D.roundRect(
     fruit[0] * gridElement + 5,
@@ -26,7 +26,7 @@ export const drawFruits = (fruitColor, fruitBorderColor, branchFruitColor) => {
     gridElement - 35,
     5
   );
-  context2D.fillStyle = `${branchFruitColor}`;
+  context2D.fillStyle = `${fruitBranchColor}`;
   context2D.fill();
   context2D.closePath();
 };

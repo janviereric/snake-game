@@ -1,13 +1,4 @@
-import {
-  context2D,
-  gridElement,
-  snakeHeadColor,
-  snakeEyeFirstColor,
-  snakeEyeSecondColor,
-  snakeEyeThirdColor,
-  snakeNostrilColor,
-  snakeColorBorder,
-} from "../index.js";
+import { context2D, gridElement } from "../index.js";
 
 export const snake = [
   [2, 7],
@@ -15,8 +6,15 @@ export const snake = [
   [0, 7],
 ];
 
-export const drawSnakeHeadRight = () => {
-  // snake head start
+export const drawSnakeHeadRightDirection = (
+  snakeHeadColor,
+  snakeBorderColor,
+  snakeNostrilColor,
+  snakeEyePrimaryColor,
+  snakeEyeSecondaryColor,
+  snakeEyeTertiaryColor
+) => {
+  // snake head right direction start
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement + 2,
@@ -26,8 +24,8 @@ export const drawSnakeHeadRight = () => {
     15
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeHeadColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeHeadColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
@@ -41,7 +39,7 @@ export const drawSnakeHeadRight = () => {
     gridElement - 38,
     2
   );
-  context2D.fillStyle = snakeNostrilColor;
+  context2D.fillStyle = `${snakeNostrilColor}`;
   context2D.fill();
   context2D.closePath();
   // snake right nostril end
@@ -55,7 +53,7 @@ export const drawSnakeHeadRight = () => {
     gridElement - 38,
     2
   );
-  context2D.fillStyle = snakeNostrilColor;
+  context2D.fillStyle = `${snakeNostrilColor}`;
   context2D.fill();
   context2D.closePath();
   // snake left nostril end
@@ -63,40 +61,40 @@ export const drawSnakeHeadRight = () => {
   // snake right eye start
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement,
+    snake[0][0] * gridElement + 1,
     snake[0][1] * gridElement + 20,
     gridElement - 20,
     gridElement - 20,
     10
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeEyeFirstColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeEyePrimaryColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 3,
+    snake[0][0] * gridElement + 5,
     snake[0][1] * gridElement + 23,
     gridElement - 25,
     gridElement - 25,
     10
   );
-  context2D.fillStyle = snakeEyeSecondColor;
+  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
   context2D.fill();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 13,
+    snake[0][0] * gridElement + 15,
     snake[0][1] * gridElement + 28,
     gridElement - 35,
     gridElement - 35,
     5
   );
-  context2D.fillStyle = snakeEyeThirdColor;
+  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
   context2D.fill();
   context2D.closePath();
   // snake right eye end
@@ -104,48 +102,55 @@ export const drawSnakeHeadRight = () => {
   // snake left eye start
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement,
+    snake[0][0] * gridElement + 1,
     snake[0][1] * gridElement,
     gridElement - 20,
     gridElement - 20,
     10
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeEyeFirstColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeEyePrimaryColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 3,
+    snake[0][0] * gridElement + 5,
     snake[0][1] * gridElement + 3,
     gridElement - 25,
     gridElement - 25,
     10
   );
-  context2D.fillStyle = snakeEyeSecondColor;
+  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
   context2D.fill();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 13,
+    snake[0][0] * gridElement + 15,
     snake[0][1] * gridElement + 8,
     gridElement - 35,
     gridElement - 35,
     5
   );
-  context2D.fillStyle = snakeEyeThirdColor;
+  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
   context2D.fill();
   context2D.closePath();
   // snake left eye end
-  // snake head end
+  // snake head right direction end
 };
 
-export const drawSnakeHeadLeft = () => {
-  // snake head start
+export const drawSnakeHeadLeftDirection = (
+  snakeHeadColor,
+  snakeBorderColor,
+  snakeNostrilColor,
+  snakeEyePrimaryColor,
+  snakeEyeSecondaryColor,
+  snakeEyeTertiaryColor
+) => {
+  // snake head left direction start
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement - 1,
@@ -155,8 +160,8 @@ export const drawSnakeHeadLeft = () => {
     15
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeHeadColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeHeadColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
@@ -170,7 +175,7 @@ export const drawSnakeHeadLeft = () => {
     gridElement - 38,
     2
   );
-  context2D.fillStyle = snakeNostrilColor;
+  context2D.fillStyle = `${snakeNostrilColor}`;
   context2D.fill();
   context2D.closePath();
   // snake right nostril end
@@ -184,7 +189,7 @@ export const drawSnakeHeadLeft = () => {
     gridElement - 38,
     2
   );
-  context2D.fillStyle = snakeNostrilColor;
+  context2D.fillStyle = `${snakeNostrilColor}`;
   context2D.fill();
   context2D.closePath();
   // snake left nostril end
@@ -192,40 +197,40 @@ export const drawSnakeHeadLeft = () => {
   // snake right eye start
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 20,
+    snake[0][0] * gridElement + 19,
     snake[0][1] * gridElement,
     gridElement - 20,
     gridElement - 20,
     10
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeEyeFirstColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeEyePrimaryColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 22,
+    snake[0][0] * gridElement + 20,
     snake[0][1] * gridElement + 3,
     gridElement - 25,
     gridElement - 25,
     10
   );
-  context2D.fillStyle = snakeEyeSecondColor;
+  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
   context2D.fill();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 22,
+    snake[0][0] * gridElement + 20,
     snake[0][1] * gridElement + 7,
     gridElement - 35,
     gridElement - 35,
     5
   );
-  context2D.fillStyle = snakeEyeThirdColor;
+  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
   context2D.fill();
   context2D.closePath();
   // snake right eye end
@@ -233,48 +238,55 @@ export const drawSnakeHeadLeft = () => {
   // snake left eye start
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 20,
+    snake[0][0] * gridElement + 19,
     snake[0][1] * gridElement + 20,
     gridElement - 20,
     gridElement - 20,
     10
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeEyeFirstColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeEyePrimaryColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 22,
+    snake[0][0] * gridElement + 20,
     snake[0][1] * gridElement + 23,
     gridElement - 25,
     gridElement - 25,
     10
   );
-  context2D.fillStyle = snakeEyeSecondColor;
+  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
   context2D.fill();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 22,
+    snake[0][0] * gridElement + 20,
     snake[0][1] * gridElement + 28,
     gridElement - 35,
     gridElement - 35,
     5
   );
-  context2D.fillStyle = snakeEyeThirdColor;
+  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
   context2D.fill();
   context2D.closePath();
   // snake left eye end
-  // snake head end
+  // snake head left direction end
 };
 
-export const drawSnakeHeadTop = () => {
-  // snake head start
+export const drawSnakeHeadTopDirection = (
+  snakeHeadColor,
+  snakeBorderColor,
+  snakeNostrilColor,
+  snakeEyePrimaryColor,
+  snakeEyeSecondaryColor,
+  snakeEyeTertiaryColor
+) => {
+  // snake head top direction start
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement,
@@ -284,8 +296,8 @@ export const drawSnakeHeadTop = () => {
     15
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeHeadColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeHeadColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
@@ -299,7 +311,7 @@ export const drawSnakeHeadTop = () => {
     gridElement - 36,
     2
   );
-  context2D.fillStyle = snakeNostrilColor;
+  context2D.fillStyle = `${snakeNostrilColor}`;
   context2D.fill();
   context2D.closePath();
   // snake right nostril start
@@ -313,7 +325,7 @@ export const drawSnakeHeadTop = () => {
     gridElement - 36,
     2
   );
-  context2D.fillStyle = snakeNostrilColor;
+  context2D.fillStyle = `${snakeNostrilColor}`;
   context2D.fill();
   context2D.closePath();
   // snake left nostril end
@@ -322,14 +334,14 @@ export const drawSnakeHeadTop = () => {
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement + 20,
-    snake[0][1] * gridElement + 20,
+    snake[0][1] * gridElement + 19,
     gridElement - 20,
     gridElement - 20,
     10
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeEyeFirstColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeEyePrimaryColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
@@ -337,24 +349,24 @@ export const drawSnakeHeadTop = () => {
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement + 23,
-    snake[0][1] * gridElement + 22,
+    snake[0][1] * gridElement + 20,
     gridElement - 25,
     gridElement - 25,
     10
   );
-  context2D.fillStyle = snakeEyeSecondColor;
+  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
   context2D.fill();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement + 28,
-    snake[0][1] * gridElement + 22,
+    snake[0][1] * gridElement + 20,
     gridElement - 35,
     gridElement - 35,
     5
   );
-  context2D.fillStyle = snakeEyeThirdColor;
+  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
   context2D.fill();
   context2D.closePath();
   // snake right eye end
@@ -363,14 +375,14 @@ export const drawSnakeHeadTop = () => {
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement,
-    snake[0][1] * gridElement + 20,
+    snake[0][1] * gridElement + 19,
     gridElement - 20,
     gridElement - 20,
     10
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeEyeFirstColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeEyePrimaryColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
@@ -378,32 +390,39 @@ export const drawSnakeHeadTop = () => {
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement + 2,
-    snake[0][1] * gridElement + 22,
+    snake[0][1] * gridElement + 20,
     gridElement - 25,
     gridElement - 25,
     10
   );
-  context2D.fillStyle = snakeEyeSecondColor;
+  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
   context2D.fill();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement + 7,
-    snake[0][1] * gridElement + 22,
+    snake[0][1] * gridElement + 20,
     gridElement - 35,
     gridElement - 35,
     5
   );
-  context2D.fillStyle = snakeEyeThirdColor;
+  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
   context2D.fill();
   context2D.closePath();
   // snake left eye end
-  // snake head end
+  // snake head top direction end
 };
 
-export const drawSnakeHeadBottom = () => {
-  // snake head start
+export const drawSnakeHeadBottomDirection = (
+  snakeHeadColor,
+  snakeBorderColor,
+  snakeNostrilColor,
+  snakeEyePrimaryColor,
+  snakeEyeSecondaryColor,
+  snakeEyeTertiaryColor
+) => {
+  // snake head bottom direction start
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement,
@@ -413,8 +432,8 @@ export const drawSnakeHeadBottom = () => {
     15
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeHeadColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeHeadColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
@@ -428,7 +447,7 @@ export const drawSnakeHeadBottom = () => {
     gridElement - 36,
     2
   );
-  context2D.fillStyle = snakeNostrilColor;
+  context2D.fillStyle = `${snakeNostrilColor}`;
   context2D.fill();
   context2D.closePath();
   // snake right nostril end
@@ -442,7 +461,7 @@ export const drawSnakeHeadBottom = () => {
     gridElement - 36,
     2
   );
-  context2D.fillStyle = snakeNostrilColor;
+  context2D.fillStyle = `${snakeNostrilColor}`;
   context2D.fill();
   context2D.closePath();
   // snake left nostril end
@@ -451,14 +470,14 @@ export const drawSnakeHeadBottom = () => {
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement,
-    snake[0][1] * gridElement + 1,
+    snake[0][1] * gridElement + 2,
     gridElement - 20,
     gridElement - 20,
     10
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeEyeFirstColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeEyePrimaryColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
@@ -466,24 +485,24 @@ export const drawSnakeHeadBottom = () => {
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement + 3,
-    snake[0][1] * gridElement + 4,
+    snake[0][1] * gridElement + 6,
     gridElement - 25,
     gridElement - 25,
     10
   );
-  context2D.fillStyle = snakeEyeSecondColor;
+  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
   context2D.fill();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 8,
-    snake[0][1] * gridElement + 14,
+    snake[0][0] * gridElement + 7.5,
+    snake[0][1] * gridElement + 16,
     gridElement - 35,
     gridElement - 35,
     5
   );
-  context2D.fillStyle = snakeEyeThirdColor;
+  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
   context2D.fill();
   context2D.closePath();
   // snake right eye end
@@ -492,41 +511,41 @@ export const drawSnakeHeadBottom = () => {
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement + 20,
-    snake[0][1] * gridElement + 1,
+    snake[0][1] * gridElement + 2,
     gridElement - 20,
     gridElement - 20,
     10
   );
   context2D.lineWidth = 2;
-  context2D.strokeStyle = snakeColorBorder;
-  context2D.fillStyle = snakeEyeFirstColor;
+  context2D.strokeStyle = `${snakeBorderColor}`;
+  context2D.fillStyle = `${snakeEyePrimaryColor}`;
   context2D.fill();
   context2D.stroke();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
-    snake[0][0] * gridElement + 23,
-    snake[0][1] * gridElement + 4,
+    snake[0][0] * gridElement + 22,
+    snake[0][1] * gridElement + 5,
     gridElement - 25,
     gridElement - 25,
     10
   );
-  context2D.fillStyle = snakeEyeSecondColor;
+  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
   context2D.fill();
   context2D.closePath();
 
   context2D.beginPath();
   context2D.roundRect(
     snake[0][0] * gridElement + 28,
-    snake[0][1] * gridElement + 14,
+    snake[0][1] * gridElement + 16,
     gridElement - 35,
     gridElement - 35,
     5
   );
-  context2D.fillStyle = snakeEyeThirdColor;
+  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
   context2D.fill();
   context2D.closePath();
   // snake left eye end
-  // snake head end
+  // snake head bottom direction end
 };
