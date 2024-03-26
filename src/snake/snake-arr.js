@@ -520,7 +520,7 @@ export const arrColorSnake = [
 export const arrEastDirectionHeadSnake = [
   // // right head start
   {
-    x: 2,
+    x: null,
     y: null,
     width: null,
     height: null,
@@ -641,7 +641,7 @@ export const arrEastDirectionHeadSnake = [
 export const arrWestDirectionHeadSnake = [
   // // left head start
   {
-    x: -1,
+    x: null,
     y: null,
     width: null,
     height: null,
@@ -745,7 +745,7 @@ export const arrNorthDirectionHeadSnake = [
   // // top head start
   {
     x: null,
-    y: -1,
+    y: null,
     width: null,
     height: null,
     radii: 15,
@@ -848,7 +848,7 @@ export const arrSouthDirectionHeadSnake = [
   // // right head start
   {
     x: null,
-    y: 2,
+    y: null,
     width: null,
     height: null,
     radii: 15,
