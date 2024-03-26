@@ -1,551 +1,183 @@
-import { context2D, gridElement } from "../index.js";
+import {
+  data,
+  ctx,
+  grid,
+  arrEastDirectionHeadSnake,
+  arrWestDirectionHeadSnake,
+  arrNorthDirectionHeadSnake,
+  arrSouthDirectionHeadSnake,
+} from "../index.js";
 
-export const snake = [
-  [2, 7],
-  [1, 7],
-  [0, 7],
-];
-
-export const drawSnakeHeadRightDirection = (
-  snakeHeadColor,
-  snakeBorderColor,
-  snakeNostrilColor,
-  snakeEyePrimaryColor,
-  snakeEyeSecondaryColor,
-  snakeEyeTertiaryColor
+const drawAnyDirectionHeadSnake = (
+  x,
+  y,
+  width,
+  height,
+  radii,
+  linewidth,
+  colorOutline,
+  color
 ) => {
-  // snake head right direction start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 2,
-    snake[0][1] * gridElement,
-    gridElement,
-    gridElement,
-    15
+  ctx.beginPath();
+  ctx.roundRect(
+    data.xySnake[0][0] * grid + x,
+    data.xySnake[0][1] * grid + y,
+    grid - width,
+    grid - height,
+    radii
   );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeHeadColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
-
-  // snake right nostril start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 32,
-    snake[0][1] * gridElement + 25,
-    gridElement - 36,
-    gridElement - 38,
-    2
-  );
-  context2D.fillStyle = `${snakeNostrilColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake right nostril end
-
-  // snake left nostril start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 32,
-    snake[0][1] * gridElement + 12,
-    gridElement - 36,
-    gridElement - 38,
-    2
-  );
-  context2D.fillStyle = `${snakeNostrilColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake left nostril end
-
-  // snake right eye start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 1,
-    snake[0][1] * gridElement + 20,
-    gridElement - 20,
-    gridElement - 20,
-    10
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeEyePrimaryColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 5,
-    snake[0][1] * gridElement + 23,
-    gridElement - 25,
-    gridElement - 25,
-    10
-  );
-  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 15,
-    snake[0][1] * gridElement + 28,
-    gridElement - 35,
-    gridElement - 35,
-    5
-  );
-  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake right eye end
-
-  // snake left eye start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 1,
-    snake[0][1] * gridElement,
-    gridElement - 20,
-    gridElement - 20,
-    10
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeEyePrimaryColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 5,
-    snake[0][1] * gridElement + 3,
-    gridElement - 25,
-    gridElement - 25,
-    10
-  );
-  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 15,
-    snake[0][1] * gridElement + 8,
-    gridElement - 35,
-    gridElement - 35,
-    5
-  );
-  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake left eye end
-  // snake head right direction end
+  ctx.linewidth = linewidth;
+  ctx.strokeStyle = `${colorOutline}`;
+  ctx.fillStyle = `${color}`;
+  ctx.fill();
+  ctx.stroke();
+  ctx.closePath();
 };
 
-export const drawSnakeHeadLeftDirection = (
-  snakeHeadColor,
-  snakeBorderColor,
-  snakeNostrilColor,
-  snakeEyePrimaryColor,
-  snakeEyeSecondaryColor,
-  snakeEyeTertiaryColor
+// draw east direction head snake start
+export const drawEastDirectionHeadSnake = (
+  colorHeadSnake,
+  colorEyelidSnake,
+  colorScleraSnake,
+  colorPupilSnake,
+  colorNostrilSnake,
+  colorOutlineSnake
 ) => {
-  // snake head left direction start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement - 1,
-    snake[0][1] * gridElement,
-    gridElement,
-    gridElement,
-    15
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeHeadColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
+  arrEastDirectionHeadSnake[0].colorOutline = colorOutlineSnake;
+  arrEastDirectionHeadSnake[0].color = colorHeadSnake;
+  arrEastDirectionHeadSnake[1].color = colorNostrilSnake;
+  arrEastDirectionHeadSnake[2].color = colorNostrilSnake;
+  arrEastDirectionHeadSnake[3].colorOutline = colorOutlineSnake;
+  arrEastDirectionHeadSnake[3].color = colorEyelidSnake;
+  arrEastDirectionHeadSnake[4].colorOutline = colorOutlineSnake;
+  arrEastDirectionHeadSnake[4].color = colorEyelidSnake;
+  arrEastDirectionHeadSnake[5].color = colorScleraSnake;
+  arrEastDirectionHeadSnake[6].color = colorScleraSnake;
+  arrEastDirectionHeadSnake[7].color = colorPupilSnake;
+  arrEastDirectionHeadSnake[8].color = colorPupilSnake;
 
-  // snake right nostril start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 4,
-    snake[0][1] * gridElement + 13,
-    gridElement - 36,
-    gridElement - 38,
-    2
-  );
-  context2D.fillStyle = `${snakeNostrilColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake right nostril end
-
-  // snake left nostril start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 4,
-    snake[0][1] * gridElement + 25,
-    gridElement - 36,
-    gridElement - 38,
-    2
-  );
-  context2D.fillStyle = `${snakeNostrilColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake left nostril end
-
-  // snake right eye start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 19,
-    snake[0][1] * gridElement,
-    gridElement - 20,
-    gridElement - 20,
-    10
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeEyePrimaryColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 20,
-    snake[0][1] * gridElement + 3,
-    gridElement - 25,
-    gridElement - 25,
-    10
-  );
-  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 20,
-    snake[0][1] * gridElement + 7,
-    gridElement - 35,
-    gridElement - 35,
-    5
-  );
-  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake right eye end
-
-  // snake left eye start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 19,
-    snake[0][1] * gridElement + 20,
-    gridElement - 20,
-    gridElement - 20,
-    10
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeEyePrimaryColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 20,
-    snake[0][1] * gridElement + 23,
-    gridElement - 25,
-    gridElement - 25,
-    10
-  );
-  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 20,
-    snake[0][1] * gridElement + 28,
-    gridElement - 35,
-    gridElement - 35,
-    5
-  );
-  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake left eye end
-  // snake head left direction end
+  for (let i = 0; i < arrEastDirectionHeadSnake.length; i++) {
+    drawAnyDirectionHeadSnake(
+      arrEastDirectionHeadSnake[i].x,
+      arrEastDirectionHeadSnake[i].y,
+      arrEastDirectionHeadSnake[i].width,
+      arrEastDirectionHeadSnake[i].height,
+      arrEastDirectionHeadSnake[i].radii,
+      arrEastDirectionHeadSnake[i].linewidth,
+      arrEastDirectionHeadSnake[i].colorOutline,
+      arrEastDirectionHeadSnake[i].color
+    );
+  }
 };
+// draw east direction head snake end
 
-export const drawSnakeHeadTopDirection = (
-  snakeHeadColor,
-  snakeBorderColor,
-  snakeNostrilColor,
-  snakeEyePrimaryColor,
-  snakeEyeSecondaryColor,
-  snakeEyeTertiaryColor
+// draw west direction head snake start
+export const drawWestDirectionHeadSnake = (
+  colorHeadSnake,
+  colorEyelidSnake,
+  colorScleraSnake,
+  colorPupilSnake,
+  colorNostrilSnake,
+  colorOutlineSnake
 ) => {
-  // snake head top direction start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement,
-    snake[0][1] * gridElement - 1,
-    gridElement,
-    gridElement,
-    15
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeHeadColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
+  arrWestDirectionHeadSnake[0].colorOutline = colorOutlineSnake;
+  arrWestDirectionHeadSnake[0].color = colorHeadSnake;
+  arrWestDirectionHeadSnake[1].color = colorNostrilSnake;
+  arrWestDirectionHeadSnake[2].color = colorNostrilSnake;
+  arrWestDirectionHeadSnake[3].colorOutline = colorOutlineSnake;
+  arrWestDirectionHeadSnake[3].color = colorEyelidSnake;
+  arrWestDirectionHeadSnake[4].colorOutline = colorOutlineSnake;
+  arrWestDirectionHeadSnake[4].color = colorEyelidSnake;
+  arrWestDirectionHeadSnake[5].color = colorScleraSnake;
+  arrWestDirectionHeadSnake[6].color = colorScleraSnake;
+  arrWestDirectionHeadSnake[7].color = colorPupilSnake;
+  arrWestDirectionHeadSnake[8].color = colorPupilSnake;
 
-  // snake right nostril start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 25,
-    snake[0][1] * gridElement + 6,
-    gridElement - 38,
-    gridElement - 36,
-    2
-  );
-  context2D.fillStyle = `${snakeNostrilColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake right nostril start
-
-  // snake left nostril start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 13,
-    snake[0][1] * gridElement + 6,
-    gridElement - 38,
-    gridElement - 36,
-    2
-  );
-  context2D.fillStyle = `${snakeNostrilColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake left nostril end
-
-  // snake right eye start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 20,
-    snake[0][1] * gridElement + 19,
-    gridElement - 20,
-    gridElement - 20,
-    10
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeEyePrimaryColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 23,
-    snake[0][1] * gridElement + 20,
-    gridElement - 25,
-    gridElement - 25,
-    10
-  );
-  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 28,
-    snake[0][1] * gridElement + 20,
-    gridElement - 35,
-    gridElement - 35,
-    5
-  );
-  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake right eye end
-
-  // snake left eye start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement,
-    snake[0][1] * gridElement + 19,
-    gridElement - 20,
-    gridElement - 20,
-    10
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeEyePrimaryColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 2,
-    snake[0][1] * gridElement + 20,
-    gridElement - 25,
-    gridElement - 25,
-    10
-  );
-  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 7,
-    snake[0][1] * gridElement + 20,
-    gridElement - 35,
-    gridElement - 35,
-    5
-  );
-  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake left eye end
-  // snake head top direction end
+  for (let i = 0; i < arrWestDirectionHeadSnake.length; i++) {
+    drawAnyDirectionHeadSnake(
+      arrWestDirectionHeadSnake[i].x,
+      arrWestDirectionHeadSnake[i].y,
+      arrWestDirectionHeadSnake[i].width,
+      arrWestDirectionHeadSnake[i].height,
+      arrWestDirectionHeadSnake[i].radii,
+      arrWestDirectionHeadSnake[i].linewidth,
+      arrWestDirectionHeadSnake[i].colorOutline,
+      arrWestDirectionHeadSnake[i].color
+    );
+  }
 };
+// draw west direction head snake end
 
-export const drawSnakeHeadBottomDirection = (
-  snakeHeadColor,
-  snakeBorderColor,
-  snakeNostrilColor,
-  snakeEyePrimaryColor,
-  snakeEyeSecondaryColor,
-  snakeEyeTertiaryColor
+// draw north direction head snake start
+export const drawNorthDirectionHeadSnake = (
+  colorHeadSnake,
+  colorEyelidSnake,
+  colorScleraSnake,
+  colorPupilSnake,
+  colorNostrilSnake,
+  colorOutlineSnake
 ) => {
-  // snake head bottom direction start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement,
-    snake[0][1] * gridElement + 2,
-    gridElement,
-    gridElement,
-    15
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeHeadColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
+  arrNorthDirectionHeadSnake[0].colorOutline = colorOutlineSnake;
+  arrNorthDirectionHeadSnake[0].color = colorHeadSnake;
+  arrNorthDirectionHeadSnake[1].color = colorNostrilSnake;
+  arrNorthDirectionHeadSnake[2].color = colorNostrilSnake;
+  arrNorthDirectionHeadSnake[3].colorOutline = colorOutlineSnake;
+  arrNorthDirectionHeadSnake[3].color = colorEyelidSnake;
+  arrNorthDirectionHeadSnake[4].colorOutline = colorOutlineSnake;
+  arrNorthDirectionHeadSnake[4].color = colorEyelidSnake;
+  arrNorthDirectionHeadSnake[5].color = colorScleraSnake;
+  arrNorthDirectionHeadSnake[6].color = colorScleraSnake;
+  arrNorthDirectionHeadSnake[7].color = colorPupilSnake;
+  arrNorthDirectionHeadSnake[8].color = colorPupilSnake;
 
-  // snake right nostril start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 13,
-    snake[0][1] * gridElement + 30,
-    gridElement - 38,
-    gridElement - 36,
-    2
-  );
-  context2D.fillStyle = `${snakeNostrilColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake right nostril end
-
-  // snake left nostril start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 25,
-    snake[0][1] * gridElement + 30,
-    gridElement - 38,
-    gridElement - 36,
-    2
-  );
-  context2D.fillStyle = `${snakeNostrilColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake left nostril end
-
-  // snake right eye start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement,
-    snake[0][1] * gridElement + 2,
-    gridElement - 20,
-    gridElement - 20,
-    10
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeEyePrimaryColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 3,
-    snake[0][1] * gridElement + 6,
-    gridElement - 25,
-    gridElement - 25,
-    10
-  );
-  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 7.5,
-    snake[0][1] * gridElement + 16,
-    gridElement - 35,
-    gridElement - 35,
-    5
-  );
-  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake right eye end
-
-  // snake left eye start
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 20,
-    snake[0][1] * gridElement + 2,
-    gridElement - 20,
-    gridElement - 20,
-    10
-  );
-  context2D.lineWidth = 2;
-  context2D.strokeStyle = `${snakeBorderColor}`;
-  context2D.fillStyle = `${snakeEyePrimaryColor}`;
-  context2D.fill();
-  context2D.stroke();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 22,
-    snake[0][1] * gridElement + 5,
-    gridElement - 25,
-    gridElement - 25,
-    10
-  );
-  context2D.fillStyle = `${snakeEyeSecondaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-
-  context2D.beginPath();
-  context2D.roundRect(
-    snake[0][0] * gridElement + 28,
-    snake[0][1] * gridElement + 16,
-    gridElement - 35,
-    gridElement - 35,
-    5
-  );
-  context2D.fillStyle = `${snakeEyeTertiaryColor}`;
-  context2D.fill();
-  context2D.closePath();
-  // snake left eye end
-  // snake head bottom direction end
+  for (let i = 0; i < arrNorthDirectionHeadSnake.length; i++) {
+    drawAnyDirectionHeadSnake(
+      arrNorthDirectionHeadSnake[i].x,
+      arrNorthDirectionHeadSnake[i].y,
+      arrNorthDirectionHeadSnake[i].width,
+      arrNorthDirectionHeadSnake[i].height,
+      arrNorthDirectionHeadSnake[i].radii,
+      arrNorthDirectionHeadSnake[i].linewidth,
+      arrNorthDirectionHeadSnake[i].colorOutline,
+      arrNorthDirectionHeadSnake[i].color
+    );
+  }
 };
+// draw north direction head snake end
+
+// draw south direction head snake start
+export const drawSouthDirectionHeadSnake = (
+  colorHeadSnake,
+  colorEyelidSnake,
+  colorScleraSnake,
+  colorPupilSnake,
+  colorNostrilSnake,
+  colorOutlineSnake
+) => {
+  arrSouthDirectionHeadSnake[0].colorOutline = colorOutlineSnake;
+  arrSouthDirectionHeadSnake[0].color = colorHeadSnake;
+  arrSouthDirectionHeadSnake[1].color = colorNostrilSnake;
+  arrSouthDirectionHeadSnake[2].color = colorNostrilSnake;
+  arrSouthDirectionHeadSnake[3].colorOutline = colorOutlineSnake;
+  arrSouthDirectionHeadSnake[3].color = colorEyelidSnake;
+  arrSouthDirectionHeadSnake[4].colorOutline = colorOutlineSnake;
+  arrSouthDirectionHeadSnake[4].color = colorEyelidSnake;
+  arrSouthDirectionHeadSnake[5].color = colorScleraSnake;
+  arrSouthDirectionHeadSnake[6].color = colorScleraSnake;
+  arrSouthDirectionHeadSnake[7].color = colorPupilSnake;
+  arrSouthDirectionHeadSnake[8].color = colorPupilSnake;
+
+  for (let i = 0; i < arrSouthDirectionHeadSnake.length; i++) {
+    drawAnyDirectionHeadSnake(
+      arrSouthDirectionHeadSnake[i].x,
+      arrSouthDirectionHeadSnake[i].y,
+      arrSouthDirectionHeadSnake[i].width,
+      arrSouthDirectionHeadSnake[i].height,
+      arrSouthDirectionHeadSnake[i].radii,
+      arrSouthDirectionHeadSnake[i].linewidth,
+      arrSouthDirectionHeadSnake[i].colorOutline,
+      arrSouthDirectionHeadSnake[i].color
+    );
+  }
+};
+// draw south direction head snake end

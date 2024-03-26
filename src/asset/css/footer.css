@@ -1,0 +1,29 @@
+footer {
+  min-height: 80px;
+  width: 680px;
+  margin-top: -4.8px;
+  background-color: #7f8c8d;
+  color: #f5f6fa;
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 5px 5px;
+}
+
+footer img {
+  height: 15px;
+  width: 15px;
+  margin-bottom: -1.6px;
+}
+
+.j {
+  font-family: "Roboto Condensed", sans-serif;
+  color: black;
+}
+
+.e {
+  font-family: "Roboto Condensed", sans-serif;
+  color: black;
+}

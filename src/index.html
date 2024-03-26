@@ -20,10 +20,147 @@
     <script src="./index.js" type="module"></script>
   </head>
   <body>
-    <header></header>
+    <header>
+      <h1>Snake Game</h1>
+      <div id="container-header-fruit">
+        <p id="number-header-fruit"></p>
+        <div id="img-header-fruit"></div>
+      </div>
+    </header>
     <main>
-      <div id="menu"></div>
-      <div id="container-keyboard-key"></div>
+      <div id="menu">
+        <div class="calc">
+          <div class="menu-screen">
+            <div id="menu-home">
+              <div id="home-header">
+                <h2>Menu du jeu</h2>
+                <i id="btn-next" class="fa-solid fa-arrow-right"></i>
+              </div>
+              <div id="home-body">
+                <div id="home-fruit-speed">
+                  <div id="home-fruit">
+                    <div id="img-home-fruit"></div>
+                    <p id="number-home-fruit"></p>
+                  </div>
+                  <div id="home-speed">
+                    <div id="img-home-speed"></div>
+                  </div>
+                </div>
+                <div id="home-snake">
+                  <div id="img-home-snake"></div>
+                </div>
+                <div id="home-mode-screen">
+                  <div id="home-mode">
+                    <div id="img-home-mode"></div>
+                  </div>
+                  <div id="home-screen">
+                    <div id="img-home-screen"></div>
+                  </div>
+                </div>
+                <div id="home-land"></div>
+              </div>
+            </div>
+            <div id="menu-param">
+              <div id="param-header">
+                <i id="btn-back" class="fa-solid fa-arrow-left"></i>
+                <h2>Menu du jeu</h2>
+              </div>
+              <div id="param-body">
+                <div class="param-tab">
+                  <div id="tab-option" class="param-tabs">Options</div>
+                  <div id="tab-detail" class="param-tabs">Détails</div>
+                  <div id="tab-rule" class="param-tabs">Règles</div>
+                  <div id="tab-command" class="param-tabs">Commandes</div>
+                </div>
+                <div id="option-body" class="param-bodies">
+                  <div id="option-fruit" class="options">
+                    <div id="img-option-fruit" class="img-options"></div>
+                  </div>
+                  <div id="option-snake" class="options">
+                    <div id="img-option-snake" class="img-options"></div>
+                  </div>
+                  <div id="option-land" class="options">
+                    <div id="img-option-land" class="img-options"></div>
+                  </div>
+                  <div id="option-speed" class="options">
+                    <div id="img-option-speed" class="img-options"></div>
+                  </div>
+                  <div id="option-mode" class="options">
+                    <div id="img-option-mode" class="img-options"></div>
+                  </div>
+                  <div id="option-screen" class="options">
+                    <div id="img-option-screen" class="img-options"></div>
+                  </div>
+                </div>
+                <div id="detail-body" class="param-bodies">
+                  <div id="detail-fruit" class="details">
+                    <div id="img-detail-fruit" class="img-details"></div>
+                    <div id="txt-detail-fruit" class="txt-details"></div>
+                  </div>
+                  <div id="detail-snake" class="details">
+                    <div id="img-detail-snake" class="img-details"></div>
+                    <div id="txt-detail-snake" class="txt-details"></div>
+                  </div>
+                  <div id="detail-land" class="details">
+                    <div id="img-detail-land" class="img-details"></div>
+                    <div id="txt-detail-land" class="txt-details"></div>
+                  </div>
+                  <div id="detail-speed" class="details">
+                    <div id="img-detail-speed" class="img-details"></div>
+                    <div id="txt-detail-speed" class="txt-details"></div>
+                  </div>
+                  <div id="detail-mode" class="details">
+                    <div id="img-detail-mode" class="img-details"></div>
+                    <div id="txt-detail-mode" class="txt-details"></div>
+                  </div>
+                  <div id="detail-screen" class="details">
+                    <div id="img-detail-screen" class="img-details"></div>
+                    <div id="txt-detail-screen" class="txt-details"></div>
+                  </div>
+                </div>
+                <div id="rule-body" class="param-bodies">
+                  <div id="rule-win" class="rules"></div>
+                  <div id="rule-lose" class="rules"></div>
+                  <div id="rule-speed-fix" class="rules"></div>
+                  <div id="rule-speed-scalable" class="rules"></div>
+                </div>
+                <div id="command-body" class="param-bodies">
+                  <div id="command-right" class="commands"></div>
+                  <div id="command-left" class="commands"></div>
+                  <div id="command-top" class="commands"></div>
+                  <div id="command-bottom" class="commands"></div>
+                  <div id="command-timeout" class="commands"></div>
+                </div>
+              </div>
+            </div>
+            <div id="menu-btn">
+              <button id="btn-play">▶ Jouer</button>
+              <div id="btn-je">
+                <img
+                  id="img-je"
+                  src="./asset/img/je.png"
+                  alt="janviereric.com"
+                />
+              </div>
+              <div id="btn-param">
+                <img
+                  id="img-btn-param-gray"
+                  src="./asset/img/btn-param-gray.jpg"
+                  alt="bouton paramètre"
+                />
+                <img
+                  id="img-btn-param-green"
+                  src="./asset/img/btn-param-green.jpg"
+                  alt="bouton paramètre"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="container-keyboard-key">
+        <img src="./asset/img/keyboard-key.jpg" alt="touche clavier" />
+      </div>
       <div id="container-game"></div>
     </main>
     <footer></footer>

@@ -1,0 +1,367 @@
+.calc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* menu page home start */
+#home-header {
+  height: 50px;
+  width: 320px;
+  border-radius: 5px 5px 0 0;
+  background-color: #27ae60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  i {
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #f5f6fa;
+    padding: 3px;
+    border-radius: 25px;
+    &:hover {
+      color: #27ae60;
+    }
+  }
+  h2 {
+    margin-left: 100px;
+    font-size: 18px;
+    color: #f5f6fa;
+  }
+}
+
+#home-body {
+  background-color: #bde1cc;
+  border-radius: 0 0 5px 5px;
+}
+
+#home-fruit-speed {
+  display: flex;
+  justify-content: space-between;
+}
+
+#home-fruit {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 0 5px;
+}
+
+#number-home-fruit {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 7px 5px 0 15px;
+}
+
+#home-speed {
+  margin: 10px 5px 0 0;
+}
+
+#home-snake {
+  height: 200px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#home-mode-screen {
+  display: flex;
+  justify-content: space-between;
+}
+
+#home-mode {
+  margin-left: 5px;
+}
+
+#home-screen {
+  margin-right: 5px;
+}
+/* menu page home end */
+
+#param-header {
+  height: 50px;
+  border-radius: 5px 5px 0 0;
+  background-color: #27ae60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  i {
+    margin-left: 10px;
+    cursor: pointer;
+    background-color: #f5f6fa;
+    padding: 3px;
+    border-radius: 25px;
+    &:hover {
+      color: #27ae60;
+    }
+  }
+  h2 {
+    margin-right: 100px;
+    font-size: 18px;
+    color: #f5f6fa;
+  }
+}
+
+/* menu page param tab start */
+.param-tab {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #bde1cc;
+}
+
+.param-tabs {
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f5f6fa;
+  transition: all 0.2s;
+  &:hover {
+    box-shadow: 0 0.1rem 0.2rem 0 rgba(60, 64, 67, 0.3),
+      0 0.1rem 0.3rem 0.1rem rgba(60, 64, 67, 0.15);
+    transition: all 0.2s;
+  }
+}
+/* menu page param tab end */
+
+/* menu page param all bodies start */
+.param-bodies {
+  width: 320px;
+  height: 305px;
+  display: flex;
+  flex-direction: column;
+  background-color: #bde1cc;
+  border-radius: 0 0 5px 5px;
+}
+/* menu page param all bodies end */
+
+/* menu page param option start */
+#option-body {
+  flex: auto;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.options {
+  /* make the element scrolling start */
+  white-space: nowrap;
+  overflow-x: scroll;
+  /* make the element scrolling end */
+  border-bottom: 1px solid #2ecc71;
+  &:last-child {
+    border-bottom: none;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.param-tab {
+  border-bottom: 1px solid #2ecc71;
+}
+
+.img-options {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  position: relative;
+}
+
+#img-option-fruit {
+  left: 155px;
+  width: 605px;
+}
+
+#img-option-snake {
+  left: 153px;
+  width: 607px;
+}
+
+#img-option-land {
+  left: 155px;
+  width: 606px;
+}
+
+#img-option-speed {
+  left: 155px;
+  width: 284px;
+}
+
+#img-option-mode {
+  left: 157px;
+  width: 202px;
+}
+
+#img-option-screen {
+  left: 156px;
+  width: 238px;
+}
+/* menu page param option end */
+
+/* menu page param detail start */
+.details {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #2ecc71;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.img-details {
+  display: flex;
+  align-items: center;
+}
+
+.txt-details {
+  font-size: 12px;
+  margin: 10px;
+  span {
+    font-weight: bold;
+    color: green;
+  }
+}
+/* menu page param detail end */
+
+/* menu page param rule start */
+.rules {
+  font-size: 12px;
+  border-bottom: 1px solid #2ecc71;
+  &:last-child {
+    border-bottom: none;
+  }
+  span {
+    font-weight: bold;
+    color: green;
+  }
+  ul {
+    margin: 6px;
+    li {
+      margin: 7.5px 5px 5.5px 30px;
+    }
+    li::marker {
+      color: green;
+    }
+  }
+}
+/* menu page param rule end */
+
+/* menu page param command start */
+.commands {
+  font-size: 12px;
+  border-bottom: 1px solid #2ecc71;
+  &:last-child {
+    border-bottom: none;
+  }
+  span {
+    font-weight: bold;
+    color: green;
+  }
+  ul {
+    margin: 5.5px;
+    li {
+      margin: 7.5px 5px 5.5px 30px;
+    }
+    li::marker {
+      color: green;
+    }
+  }
+}
+/* menu page param command end */
+
+/* menu btn start */
+#menu-btn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#btn-play {
+  border: 0;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-weight: 700;
+  color: #27ae60;
+  background-color: #f5f6fa;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    color: #f5f6fa;
+    background-color: #27ae60;
+    transition: all 0.2s;
+  }
+}
+
+#btn-je {
+  height: 65px;
+  width: 65px;
+  border-radius: 0.3rem;
+  background-color: #f5f6fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  #img-je {
+    display: inline;
+    margin: 1px;
+  }
+  &:hover {
+    opacity: 89%;
+    background-color: #2ecc71;
+    transition: all 0.2s;
+  }
+  img {
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+  }
+}
+
+#btn-param {
+  height: 65px;
+  width: 65px;
+  border-radius: 5px;
+  background-color: #f5f6fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 89%;
+    transition: all 0.2s;
+    box-shadow: 0 0.1rem 0.2rem 0 rgba(60, 64, 67, 0.3),
+      0 0.1rem 0.3rem 0.1rem rgba(60, 64, 67, 0.15);
+  }
+  img {
+    height: 50px;
+    width: 50px;
+  }
+}
+/* menu btn end */
+
+/* container keyboard key start */
+#container-keyboard-key img {
+  position: absolute;
+  height: 160px;
+  width: 160px;
+  margin-left: 320px;
+  margin-top: 192px;
+  border-radius: 5px;
+  opacity: 40%;
+}
+/* container keyboard key end */

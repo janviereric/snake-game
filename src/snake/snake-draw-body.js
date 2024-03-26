@@ -1,307 +1,123 @@
-import { context2D, gridElement, snake, direction } from "../index.js";
+import {
+  data,
+  ctx,
+  grid,
+  arrStainBodySnake,
+  arrLongStainEastWestFirstBodySnake,
+  arrLongStainNorthSouthFirstBodySnake,
+} from "../index.js";
 
-export const drawSnakeBody = (
-  snakeBodyColor,
-  snakeBorderColor,
-  snakeLongStainColor,
-  snakeRoundStainColor,
-  snakeStainBorderColor
+// body snake start
+export const drawBodySnake = (
+  colorSkinSnake,
+  colorLongStainSnake,
+  colorRoundStainSnake,
+  colorOutlineSnake,
+  colorOutlineStainSnake
 ) => {
-  // snake body start
-  let [, ...snakeBody] = snake;
+  let [, ...snakeBody] = data.xySnake;
 
   for (let body of snakeBody) {
-    context2D.beginPath();
-    context2D.roundRect(
-      body[0] * gridElement,
-      body[1] * gridElement,
-      gridElement,
-      gridElement,
-      10
-    );
-    context2D.lineWidth = 2;
-    context2D.strokeStyle = `${snakeBorderColor}`;
-    context2D.fillStyle = `${snakeBodyColor}`;
-    context2D.fill();
-    context2D.stroke();
-    context2D.closePath();
+    ctx.beginPath();
+    ctx.roundRect(body[0] * grid, body[1] * grid, grid, grid, 10);
+    ctx.linewidth = 2;
+    ctx.strokeStyle = `${colorOutlineSnake}`;
+    ctx.fillStyle = `${colorSkinSnake}`;
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
     snakeBody.pop();
     snakeBody.push(body);
 
-    // snake body first stain start
-    context2D.beginPath();
-    context2D.roundRect(
-      body[0] * gridElement + 3,
-      body[1] * gridElement + 3,
-      gridElement - 32,
-      gridElement - 32,
-      5
-    );
-    context2D.lineWidth = 1;
-    context2D.strokeStyle = `${snakeStainBorderColor}`;
-    context2D.fillStyle = `${snakeRoundStainColor}`;
-    context2D.fill();
-    context2D.stroke();
-    context2D.closePath();
-    // snake body first stain end
-
-    // snake body second stain start
-    context2D.beginPath();
-    context2D.roundRect(
-      body[0] * gridElement + 20,
-      body[1] * gridElement + 3,
-      gridElement - 32,
-      gridElement - 32,
-      5
-    );
-    context2D.lineWidth = 1;
-    context2D.strokeStyle = `${snakeStainBorderColor}`;
-    context2D.fillStyle = `${snakeRoundStainColor}`;
-    context2D.fill();
-    context2D.stroke();
-    context2D.closePath();
-    // snake body second stain end
-
-    // snake body third stain start
-    context2D.beginPath();
-    context2D.roundRect(
-      body[0] * gridElement + 12,
-      body[1] * gridElement + 12,
-      gridElement - 32,
-      gridElement - 32,
-      5
-    );
-    context2D.lineWidth = 1;
-    context2D.strokeStyle = `${snakeStainBorderColor}`;
-    context2D.fillStyle = `${snakeRoundStainColor}`;
-    context2D.fill();
-    context2D.stroke();
-    context2D.closePath();
-    // snake body third stain end
-
-    // snake body fourth stain start
-    context2D.beginPath();
-    context2D.roundRect(
-      body[0] * gridElement + 29,
-      body[1] * gridElement + 12,
-      gridElement - 32,
-      gridElement - 32,
-      5
-    );
-    context2D.lineWidth = 1;
-    context2D.strokeStyle = `${snakeStainBorderColor}`;
-    context2D.fillStyle = `${snakeRoundStainColor}`;
-    context2D.fill();
-    context2D.stroke();
-    context2D.closePath();
-    // snake body fourth stain end
-
-    // snake body fifth stain start
-    context2D.beginPath();
-    context2D.roundRect(
-      body[0] * gridElement + 3,
-      body[1] * gridElement + 20,
-      gridElement - 32,
-      gridElement - 32,
-      5
-    );
-    context2D.lineWidth = 1;
-    context2D.strokeStyle = `${snakeStainBorderColor}`;
-    context2D.fillStyle = `${snakeRoundStainColor}`;
-    context2D.fill();
-    context2D.stroke();
-    context2D.closePath();
-    // snake body fifth stain end
-
-    // snake body sixth stain start
-    context2D.beginPath();
-    context2D.roundRect(
-      body[0] * gridElement + 20,
-      body[1] * gridElement + 20,
-      gridElement - 32,
-      gridElement - 32,
-      5
-    );
-    context2D.lineWidth = 1;
-    context2D.strokeStyle = `${snakeStainBorderColor}`;
-    context2D.fillStyle = `${snakeRoundStainColor}`;
-    context2D.fill();
-    context2D.stroke();
-    context2D.closePath();
-    // snake body sixth stain end
-
-    // snake body seventh stain start
-    context2D.beginPath();
-    context2D.roundRect(
-      body[0] * gridElement + 12,
-      body[1] * gridElement + 29,
-      gridElement - 32,
-      gridElement - 32,
-      5
-    );
-    context2D.lineWidth = 1;
-    context2D.strokeStyle = `${snakeStainBorderColor}`;
-    context2D.fillStyle = `${snakeRoundStainColor}`;
-    context2D.fill();
-    context2D.stroke();
-    context2D.closePath();
-    // snake body seventh stain end
-
-    // snake body eighth stain start
-    context2D.beginPath();
-    context2D.roundRect(
-      body[0] * gridElement + 29,
-      body[1] * gridElement + 29,
-      gridElement - 32,
-      gridElement - 32,
-      5
-    );
-    context2D.lineWidth = 1;
-    context2D.strokeStyle = `${snakeStainBorderColor}`;
-    context2D.fillStyle = `${snakeRoundStainColor}`;
-    context2D.fill();
-    context2D.stroke();
-    context2D.closePath();
-    // snake body eighth stain end
-
-    let firstBody = snakeBody[0];
-    if (direction === "east" || direction === "west") {
-      // snake body first long stain start
-      context2D.beginPath();
-      context2D.roundRect(
-        firstBody[0] * gridElement + 3,
-        firstBody[1] * gridElement + 5,
-        gridElement - 25,
-        gridElement - 30,
-        5
+    // // draw the eight stains body snake start
+    const drawStainBodySnake = (x, y, width, height, radii, linewidth) => {
+      ctx.beginPath();
+      ctx.roundRect(
+        body[0] * grid + x,
+        body[1] * grid + y,
+        grid - width,
+        grid - height,
+        radii
       );
-      context2D.lineWidth = 1;
-      context2D.strokeStyle = `${snakeStainBorderColor}`;
-      context2D.fillStyle = `${snakeLongStainColor}`;
-      context2D.fill();
-      context2D.stroke();
-      context2D.closePath();
-      // snake body first long stain end
+      ctx.linewidth = linewidth;
+      ctx.strokeStyle = `${colorOutlineStainSnake}`;
+      ctx.fillStyle = `${colorRoundStainSnake}`;
+      ctx.fill();
+      ctx.stroke();
+      ctx.closePath();
+    };
 
-      // snake body second long stain start
-      context2D.beginPath();
-      context2D.roundRect(
-        firstBody[0] * gridElement + 3,
-        firstBody[1] * gridElement + 25,
-        gridElement - 25,
-        gridElement - 30,
-        5
+    for (let i = 0; i < arrStainBodySnake.length; i++) {
+      drawStainBodySnake(
+        arrStainBodySnake[i].x,
+        arrStainBodySnake[i].y,
+        arrStainBodySnake[i].width,
+        arrStainBodySnake[i].height,
+        arrStainBodySnake[i].radii,
+        arrStainBodySnake[i].linewidth
       );
-      context2D.lineWidth = 1;
-      context2D.strokeStyle = `${snakeStainBorderColor}`;
-      context2D.fillStyle = `${snakeLongStainColor}`;
-      context2D.fill();
-      context2D.stroke();
-      context2D.closePath();
-      // snake body second long stain end
-
-      // snake body third long stain start
-      context2D.beginPath();
-      context2D.roundRect(
-        firstBody[0] * gridElement + 22,
-        firstBody[1] * gridElement + 5,
-        gridElement - 25,
-        gridElement - 30,
-        5
-      );
-      context2D.lineWidth = 1;
-      context2D.strokeStyle = `${snakeStainBorderColor}`;
-      context2D.fillStyle = `${snakeLongStainColor}`;
-      context2D.fill();
-      context2D.stroke();
-      context2D.closePath();
-      // snake body third long stain end
-
-      // snake body fourth long stain start
-      context2D.beginPath();
-      context2D.roundRect(
-        firstBody[0] * gridElement + 22,
-        firstBody[1] * gridElement + 25,
-        gridElement - 25,
-        gridElement - 30,
-        5
-      );
-      context2D.lineWidth = 1;
-      context2D.strokeStyle = `${snakeStainBorderColor}`;
-      context2D.fillStyle = `${snakeLongStainColor}`;
-      context2D.fill();
-      context2D.stroke();
-      context2D.closePath();
-      // snake body fourth long stain end
-    } else {
-      // snake body first long stain start
-      context2D.beginPath();
-      context2D.roundRect(
-        firstBody[0] * gridElement + 5,
-        firstBody[1] * gridElement + 3,
-        gridElement - 30,
-        gridElement - 25,
-        5
-      );
-      context2D.lineWidth = 1;
-      context2D.strokeStyle = `${snakeStainBorderColor}`;
-      context2D.fillStyle = `${snakeLongStainColor}`;
-      context2D.fill();
-      context2D.stroke();
-      context2D.closePath();
-      // snake body first long stain end
-
-      // snake body second long stain start
-      context2D.beginPath();
-      context2D.roundRect(
-        firstBody[0] * gridElement + 5,
-        firstBody[1] * gridElement + 22,
-        gridElement - 30,
-        gridElement - 25,
-        5
-      );
-      context2D.lineWidth = 1;
-      context2D.strokeStyle = `${snakeStainBorderColor}`;
-      context2D.fillStyle = `${snakeLongStainColor}`;
-      context2D.fill();
-      context2D.stroke();
-      context2D.closePath();
-      // snake first body second stain end
-
-      // snake first body third stain start
-      context2D.beginPath();
-      context2D.roundRect(
-        firstBody[0] * gridElement + 25,
-        firstBody[1] * gridElement + 3,
-        gridElement - 30,
-        gridElement - 25,
-        5
-      );
-      context2D.lineWidth = 1;
-      context2D.strokeStyle = `${snakeStainBorderColor}`;
-      context2D.fillStyle = `${snakeLongStainColor}`;
-      context2D.fill();
-      context2D.stroke();
-      context2D.closePath();
-      // snake body third long stain end
-
-      // snake body fourth long stain start
-      context2D.beginPath();
-      context2D.roundRect(
-        firstBody[0] * gridElement + 25,
-        firstBody[1] * gridElement + 22,
-        gridElement - 30,
-        gridElement - 25,
-        5
-      );
-      context2D.lineWidth = 1;
-      context2D.strokeStyle = `${snakeStainBorderColor}`;
-      context2D.fillStyle = `${snakeLongStainColor}`;
-      context2D.fill();
-      context2D.stroke();
-      context2D.closePath();
-      // snake body fourth long stain end
     }
+    // // draw the eight stains body snake end
+
+    // // the long stains changes depending on the direction start
+    let firstBody = snakeBody[0];
+    const drawLongStainFirstBodySnake = (
+      x,
+      y,
+      width,
+      height,
+      radii,
+      linewidth
+    ) => {
+      ctx.beginPath();
+      ctx.roundRect(
+        firstBody[0] * grid + x,
+        firstBody[1] * grid + y,
+        grid - width,
+        grid - height,
+        radii
+      );
+      ctx.linewidth = linewidth;
+      ctx.strokeStyle = `${colorOutlineStainSnake}`;
+      ctx.fillStyle = `${colorLongStainSnake}`;
+      ctx.fill();
+      ctx.stroke();
+      ctx.closePath();
+    };
+
+    // // draw the four long stains east west for the first body snake start
+    switch (data.direction) {
+      case "west":
+      case "east": {
+        for (let i = 0; i < arrLongStainEastWestFirstBodySnake.length; i++) {
+          drawLongStainFirstBodySnake(
+            arrLongStainEastWestFirstBodySnake[i].x,
+            arrLongStainEastWestFirstBodySnake[i].y,
+            arrLongStainEastWestFirstBodySnake[i].width,
+            arrLongStainEastWestFirstBodySnake[i].height,
+            arrLongStainEastWestFirstBodySnake[i].radii,
+            arrLongStainEastWestFirstBodySnake[i].linewidth
+          );
+        }
+        break;
+      }
+      case "north":
+      case "south": {
+        for (let i = 0; i < arrLongStainNorthSouthFirstBodySnake.length; i++) {
+          drawLongStainFirstBodySnake(
+            arrLongStainNorthSouthFirstBodySnake[i].x,
+            arrLongStainNorthSouthFirstBodySnake[i].y,
+            arrLongStainNorthSouthFirstBodySnake[i].width,
+            arrLongStainNorthSouthFirstBodySnake[i].height,
+            arrLongStainNorthSouthFirstBodySnake[i].radii,
+            arrLongStainNorthSouthFirstBodySnake[i].linewidth
+          );
+        }
+        break;
+      }
+      // // draw the four long stains north south for the first body snake end
+    }
+    // // the long stain changes depending on the direction end
   }
-  // snake body end
 };
+// body snake end
