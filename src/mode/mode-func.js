@@ -1,4 +1,4 @@
-import { data, arrLevelSpeed } from "../index.js";
+import { data, arrLevelSpeed, header, generateFruit } from "../index.js";
 
 export const selectMode = (mode) => {
   const imgBtnParamGray = document.querySelector("#img-btn-param-gray");
@@ -30,22 +30,61 @@ export const selectMode = (mode) => {
         for (let i = 0; i < arrLevelSpeed.length; i++) {
           if (arrLevelSpeed[i].name === data.move) {
             data.speed = arrLevelSpeed[i].speed;
+            console.log(data.speed);
           }
         }
       }, 1000);
       return true;
     }
   } else if (mode === "open") {
-    if (data.xySnake[0][0] > 15) {
-      data.xySnake[0][0] = -1;
-    } else if (data.xySnake[0][0] < -1) {
-      data.xySnake[0][0] = 15;
-    } else if (data.xySnake[0][1] > 15) {
-      console.log(data.xySnake[0][1]);
-      data.xySnake[0][1] = -1;
-    } else if (data.xySnake[0][1] < -1) {
-      console.log(data.xySnake[0][1]);
-      data.xySnake[0][1] = 15;
+    if (data.xySnake[0][0] > 14) {
+      data.xySnake[0][0] = 0;
+      // allows to eat the fruit at the edge of the border start
+      if (
+        data.xyFruit[0] === data.xySnake[0][0] &&
+        data.xyFruit[1] === data.xySnake[0][1]
+      ) {
+        data.number++;
+        header(data.number);
+        generateFruit();
+      }
+      // allows to eat the fruit at the edge of the border end
+    } else if (data.xySnake[0][0] < 0) {
+      data.xySnake[0][0] = 14;
+      // allows to eat the fruit at the edge of the border start
+      if (
+        data.xyFruit[0] === data.xySnake[0][0] &&
+        data.xyFruit[1] === data.xySnake[0][1]
+      ) {
+        data.number++;
+        header(data.number);
+        generateFruit();
+      }
+      // allows to eat the fruit at the edge of the border end
+    } else if (data.xySnake[0][1] > 14) {
+      data.xySnake[0][1] = 0;
+      // allows to eat the fruit at the edge of the border start
+      if (
+        data.xyFruit[1] === data.xySnake[0][1] &&
+        data.xyFruit[0] === data.xySnake[0][0]
+      ) {
+        data.number++;
+        header(data.number);
+        generateFruit();
+      }
+      // allows to eat the fruit at the edge of the border end
+    } else if (data.xySnake[0][1] < 0) {
+      data.xySnake[0][1] = 14;
+      // allows to eat the fruit at the edge of the border start
+      if (
+        data.xyFruit[1] === data.xySnake[0][1] &&
+        data.xyFruit[0] === data.xySnake[0][0]
+      ) {
+        data.number++;
+        header(data.number);
+        generateFruit();
+      }
+      // allows to eat the fruit at the edge of the border end
     } else {
       // game over if the snake head clash with the snake body
       const [snakeHead, ...snakeBody] = data.xySnake;
@@ -67,6 +106,7 @@ export const selectMode = (mode) => {
             for (let i = 0; i < arrLevelSpeed.length; i++) {
               if (arrLevelSpeed[i].name === data.move) {
                 data.speed = arrLevelSpeed[i].speed;
+                console.log(data.speed);
               }
             }
           }, 1000);

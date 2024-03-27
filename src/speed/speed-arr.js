@@ -37,22 +37,22 @@ export const arrImgSpeed = [
 
 export const arrLevelSpeed = [
   {
-    speed: 700,
+    speed: 175,
     name: "normal",
     txt: "normale.",
   },
   {
-    speed: 500,
+    speed: 250,
     name: "slow",
     txt: "lente",
   },
   {
-    speed: 900,
+    speed: 100,
     name: "fast",
     txt: "rapide",
   },
   {
-    speed: 500,
+    speed: 250,
     name: "scalable",
     txt: "évolutive",
   },

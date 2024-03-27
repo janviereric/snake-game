@@ -16,6 +16,7 @@ import {
   selectSpeed,
   selectMode,
   menuHomeFruit,
+  arrLevelSpeed,
 } from "../index.js";
 
 let snakeHead;
@@ -138,12 +139,21 @@ const updateSnakePosition = () => {
     data.number++;
     header(data.number);
     generateFruit();
-    if (data.move === "scalable" && data.speed < 900) {
-      data.speed += 4;
-    } else if (data.speed > 900) {
-      data.speed = 900;
+    if (data.move === "scalable") {
+      if (data.number <= 25 && data.number >= 0) {
+        data.speed -= 3;
+        console.log(data.speed);
+      } else if (data.number <= 50 && data.number >= 26) {
+        data.speed -= 2;
+        console.log(data.speed);
+      } else if (data.number <= 75 && data.number >= 51) {
+        data.speed -= 1;
+        console.log(data.speed);
+      } else if (data.number <= 100 && data.number >= 76) {
+        data.speed = arrLevelSpeed[2].speed;
+        console.log(data.speed);
+      }
     }
-    console.log(data.speed);
   } else {
     data.xySnake.pop();
   }
@@ -163,7 +173,7 @@ export const gameLoop = () => {
     menuHomeFruit(data.fruit, data.number); // allows to display in the game menu the update of the number of fruits ate after winning or losing the game
     setTimeout(() => {
       requestAnimationFrame(gameLoop);
-    }, 1000 - data.speed);
+    }, data.speed);
   }
 };
 // game loop end
